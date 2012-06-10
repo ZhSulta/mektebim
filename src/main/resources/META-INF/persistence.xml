@@ -17,9 +17,10 @@
    <persistence-unit name="primary">
       <jta-data-source>java:/mektebim</jta-data-source>
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
-      <class>kz.sdu.entities.Users</class>
-      <properties>      
-	      <property name="hibernate.show_sql" value="true" />
+
+      <properties>
+      		<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+	      	<property name="hibernate.show_sql" value="true" />
 	  </properties>
       
       

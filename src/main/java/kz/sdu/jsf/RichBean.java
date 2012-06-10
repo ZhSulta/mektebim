@@ -17,24 +17,17 @@
 package kz.sdu.jsf;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Transient;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 
-import kz.sdu.entities.Users;
+import kz.sdu.entities.City;
+import kz.sdu.entities.School;
 
 /**
  * <p>
@@ -67,30 +60,44 @@ public class RichBean implements Serializable {
     }
 
     
-    public void setName(String name) {
-    	
-    	
-        try {
-        	ut.begin();
-        	
-        	Users user = new Users();
-        	user.setPassword("Some text");
-        	user.setUsername("ads");
-        	
-        	em.persist(user);
-        	
-        	List<Users> list = em.createQuery("Select u From Users u").getResultList();
-        	
-        	System.out.println(list.size());
-        	
-        	ut.commit();
-        	
-        }catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-           // entityManager.close();
-        }
-    	
+    public void setName(String name) {    	
         this.name = name;
     }
+    
+    public void doTest() {
+    	  try {
+          	ut.begin();
+          	
+          	System.out.println("Executing entites: ");
+      		
+
+      		City city=new City();
+      		city.setName("Astana");
+      		
+      		School school=new School();
+          	school.setAddress("Bayganin 24");
+          	school.setCity(city);
+          	school.setDescription("Some desc");
+          	school.setPhoneNumber("8070-12-12");
+          	
+          	
+      		
+      		System.out.println("Done");
+          	
+      		
+          	em.persist(city);
+          	em.persist(school);
+          	
+          	
+
+      		System.out.println(school.getCity().getName()+"***");
+          	ut.commit();
+          	
+          }catch (Exception e) {
+  			e.printStackTrace();
+  		} finally {
+             // entityManager.close();
+          }
+
+	}
 }
