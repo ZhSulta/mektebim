@@ -1,5 +1,6 @@
 package kz.sdu.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "city")
-public class City {
+public class City implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="city_sequence")

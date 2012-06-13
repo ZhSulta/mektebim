@@ -15,13 +15,6 @@ public class Teacher {
     @Column(name="school_id")
     BigDecimal teacher_id;
 
-    @Column
-    String username;
-
-    @Column
-    String password;
-
-
     @OneToOne
     School school;
 
@@ -64,22 +57,6 @@ public class Teacher {
 
     public void setTeacherId(BigDecimal teacher_id) {
         this.teacher_id = teacher_id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public School getSchool() {
