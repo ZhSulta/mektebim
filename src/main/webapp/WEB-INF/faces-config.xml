@@ -17,5 +17,21 @@
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
       
-      
+     <navigation-rule>
+        <from-view-id>/schoolAdmin/schoolList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>profile</from-outcome>
+            <to-view-id>/schoolAdmin/SchoolProfile.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/Teacher/classList.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>toJournal</from-outcome>
+            <to-view-id>/Teacher/ClassJournal.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>	
 </faces-config>

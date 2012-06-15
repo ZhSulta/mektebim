@@ -36,7 +36,10 @@
 	 <servlet-mapping>
 	 	<servlet-name>Faces</servlet-name>
 	 	<url-pattern>*.faces</url-pattern>
-	 	
 	 </servlet-mapping>
 	 
+	<context-param>
+        <param-name>org.richfaces.skin</param-name>
+        <param-value>blueSky</param-value>
+    </context-param>
 </web-app>
